@@ -15,7 +15,6 @@ class Simon {
                     document.getElementById("title").innerHTML = "Level "+ this.level
                     this.random_button()
                 }
-                
             })
     }
 
@@ -23,11 +22,11 @@ class Simon {
         if (this.start == true) {
             document.getElementById(id).style.background = "white";
             this.player.push(id)
-            
+
             setTimeout(() => {
                 document.getElementById(id).style.background = id;
             }, 100)
-            
+
             if (this.comparison()) {
                 if (this.player.length == this.computer.length){
                     setTimeout(() => {
@@ -37,23 +36,19 @@ class Simon {
                         document.getElementById("title").innerHTML = "Level "+ this.level
                     }, 500)
                 }
+                
             } else {
                 this.start = false
                 this.player = []
                 this.computer = []
                 document.getElementById("title").innerHTML = "Press any key for start!"
                 document.getElementById("title").innerHTML = "Game Over <br> Level "+this.level+"<br>Press eny key for new game!"
-                
             }
-
         }
-
     }
 
     random_button() {
         if (this.player.length == this.computer.length) {
-
-        
             let buttons = document.getElementById("game")
             let number = Math.floor(Math.random()*4)
             let selected = buttons.getElementsByTagName("div")[number].id
@@ -62,9 +57,7 @@ class Simon {
             setTimeout(() => {
                 document.getElementById(selected).style.background = selected;
             }, 100)
-
             this.computer.push(selected)
-
         }
     }
 
@@ -72,25 +65,15 @@ class Simon {
        
         for (let i = 0; i < this.computer.length; i++) {
             if (this.player[i] != this.computer[i]) {
-                if (this.player[i] == undefined) {
-                    
+                if (this.player[i] == undefined) { 
                 } else {
                     return false
                 }
-                
             }
         }
         return true
-        
-            
-        
-        
-
     }
-
-
 }
-
 
 const simon = new Simon()
 
