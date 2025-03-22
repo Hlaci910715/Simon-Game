@@ -21,6 +21,7 @@ class Simon {
     onclickevent(id) {
         if (this.start == true) {
             document.getElementById(id).style.background = "white";
+            document.getElementById(id+"voice").play()
             this.player.push(id)
 
             setTimeout(() => {
@@ -41,6 +42,7 @@ class Simon {
                 this.start = false
                 this.player = []
                 this.computer = []
+                document.getElementById("wrong").play()
                 document.getElementById("title").innerHTML = "Press any key for start!"
                 document.getElementById("title").innerHTML = "Game Over <br> Level "+this.level+"<br>Press eny key for new game!"
             }
@@ -53,6 +55,8 @@ class Simon {
             let number = Math.floor(Math.random()*4)
             let selected = buttons.getElementsByTagName("div")[number].id
             
+            document.getElementById(selected+"voice").play()
+
             document.getElementById(selected).style.background = "white";
             setTimeout(() => {
                 document.getElementById(selected).style.background = selected;
